@@ -13,10 +13,16 @@ const Product = (props) => {
         <p className="seller">
           <small>By: {seller}</small>
         </p>
-        <h4 className="price">Price: {price}</h4>
+        <h4 className="price">Price: ${price}</h4>
         <p className="stock">
           <small>only {stock} left in stock - order soon</small>
         </p>
+        <button
+          onClick={() => props.handleCart(props.product)}
+          className="regular-btn"
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   );
