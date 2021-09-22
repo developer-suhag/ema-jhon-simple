@@ -11,10 +11,6 @@ const Header = () => {
         <a href="/orders">Order Review</a>
         <a href="/inventory">Manage Inventroy Here</a>
       </nav>
-      <div className="serach-cart">
-        <input type="search" name="" id="" placeholder="type here to search" />
-        <span></span>
-      </div>
     </div>
   );
 };
