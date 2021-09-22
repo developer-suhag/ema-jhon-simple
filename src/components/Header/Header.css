@@ -1,0 +1,23 @@
+.header {
+  text-align: center;
+  padding: 20px 0;
+}
+.logo {
+  width: 300px;
+}
+
+.nav-bar {
+  background: #1e272e;
+}
+.nav-bar a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px;
+  margin-right: 20px;
+  display: inline-block;
+}
+.nav-bar a:hover {
+  background: #d2dae2;
+  color: #1e272e;
+}
