@@ -8,17 +8,3 @@
   border-right: 1px solid #ddd;
   margin-right: 5px;
 }
-.cart-container {
-  padding: 10px;
-  text-align: center;
-}
-.cart-container h3 {
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 12px;
-  color: #1289a7;
-}
-.cart-container h5 {
-  font-size: 16px;
-  font-weight: 400;
-}

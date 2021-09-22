@@ -1,0 +1,23 @@
+.cart-container {
+  padding: 10px;
+  text-align: center;
+}
+.cart-container h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.cart-container h5 {
+  font-size: 16px;
+  font-weight: 400;
+}
+.cart-items {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.total {
+  color: #1289a7;
+  font-size: 16px;
+  margin-top: 10px;
+}
