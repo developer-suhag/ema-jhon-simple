@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { addToDb, getStoredCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
@@ -6,10 +8,14 @@ import "./Shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
+  const [displayProducts, setDisplayProducts] = useState([]);
   useEffect(() => {
     fetch("./products.json")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProducts(data);
+        setDisplayProducts(data);
+      });
   }, []);
 
   // handle add to cart
@@ -37,19 +43,47 @@ const Shop = () => {
     }
   }, [products]);
 
+  // dynamic search
+  const handleSearch = (event) => {
+    const searchText = event.target.value;
+    const matchedProducts = products.filter((product) =>
+      product.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setDisplayProducts(matchedProducts);
+  };
+
   return (
-    <div className="shop-contaner">
-      <div className="product-container">
-        {products.map((product) => (
-          <Product
-            key={product.key}
-            handleCart={handleCart}
-            product={product}
-          ></Product>
-        ))}
+    <div>
+      <div className="search-cart">
+        <div>
+          <input
+            type="search"
+            onChange={handleSearch}
+            placeholder="type here to search"
+            id=""
+            className="search-field"
+          />
+        </div>
+        <div className="cart">
+          <span className="icon">
+            <FontAwesomeIcon icon={faShoppingCart} />
+          </span>
+          {/* <span className="">{totalQuantity}</span> */}
+        </div>
       </div>
-      <div className="cart-container">
-        <Cart cart={cart}></Cart>
+      <div className="shop-contaner">
+        <div className="product-container">
+          {displayProducts.map((product) => (
+            <Product
+              key={product.key}
+              handleCart={handleCart}
+              product={product}
+            ></Product>
+          ))}
+        </div>
+        <div className="cart-container">
+          <Cart cart={cart}></Cart>
+        </div>
       </div>
     </div>
   );

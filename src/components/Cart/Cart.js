@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./Cart.css";
 const Cart = (props) => {
-  console.log(props);
   const { cart } = props;
   // let total = 0;
   // for (const product of cart) {
@@ -14,7 +13,9 @@ const Cart = (props) => {
   let shipping = 0;
   for (const product of cart) {
     product.quantity = !product.quantity ? 1 : product.quantity;
-    totalQuantity = totalQuantity + product.quantity;
+    totalQuantity += product.quantity;
+    console.log(totalQuantity);
+    console.log(product.quantity);
     total = total + product.price * product.quantity;
     shipping = shipping + product.quantity * 3.99;
   }
