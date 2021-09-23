@@ -5,7 +5,8 @@ import "./Product.css";
 import Feature from "../Feature/Feature";
 
 const Product = (props) => {
-  const { name, img, seller, price, stock, star, features } = props.product;
+  const { name, img, seller, price, stock, star, features, key } =
+    props.product;
   return (
     <div className="product">
       <div>
