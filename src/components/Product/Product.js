@@ -1,8 +1,9 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faStar } from "@fortawesome/free-solid-svg-icons";
-import "./Product.css";
+import React from "react";
+import Rating from "react-rating";
 import Feature from "../Feature/Feature";
+import "./Product.css";
 
 const Product = (props) => {
   const { name, img, seller, price, stock, star, features, key } =
@@ -35,20 +36,14 @@ const Product = (props) => {
           </div>
           <div className="feature-box">
             <span className="star">
-              <FontAwesomeIcon icon={faStar} />
+              <Rating
+                initialRating={star}
+                readonly
+                emptySymbol="far fa-star"
+                fullSymbol="fas fa-star"
+              ></Rating>
             </span>
-            <span className="star">
-              <FontAwesomeIcon icon={faStar} />
-            </span>
-            <span className="star">
-              <FontAwesomeIcon icon={faStar} />
-            </span>
-            <span className="star">
-              <FontAwesomeIcon icon={faStar} />
-            </span>
-            <span className="star">
-              <FontAwesomeIcon icon={faStar} />
-            </span>
+
             <h4 className="feature">Features</h4>
             <ul>
               {features.map((feature) => (
