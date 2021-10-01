@@ -36,6 +36,11 @@ const Shop = () => {
     addToDb(product.key);
   };
 
+  // const totalProduct = cart.reduce(
+  //   (previous, current) => previous + current.quantity,
+  //   0
+  // );
+
   // handle localStroage
   useEffect(() => {
     const savedCart = getStoredCart();
@@ -78,7 +83,9 @@ const Shop = () => {
           <span className="icon">
             <FontAwesomeIcon icon={faShoppingCart} />
           </span>
-          {/* <span className="">{totalQuantity}</span> */}
+          <span className="">
+            {cart.reduce((previous, current) => previous + current.quantity, 0)}
+          </span>
         </div>
       </div>
       <div className="shop-contaner">

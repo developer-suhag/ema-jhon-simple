@@ -6,7 +6,7 @@ import Feature from "../Feature/Feature";
 import "./Product.css";
 
 const Product = (props) => {
-  const { name, img, seller, price, stock, star, features, key } =
+  const { name, img, seller, price, stock, star, features, key, starCount } =
     props.product;
   return (
     <div className="product">
@@ -42,6 +42,7 @@ const Product = (props) => {
                 emptySymbol="far fa-star"
                 fullSymbol="fas fa-star"
               ></Rating>
+              <small> ({starCount})</small>
             </span>
 
             <h4 className="feature">Features</h4>

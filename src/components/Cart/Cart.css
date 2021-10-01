@@ -27,6 +27,7 @@
 .shipping,
 .total-before,
 .tax,
-.grand-total {
+.grand-total,
+.total {
   margin-bottom: 10px;
 }
