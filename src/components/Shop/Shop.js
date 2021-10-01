@@ -21,7 +21,17 @@ const Shop = () => {
   // handle add to cart
   const [cart, setCart] = useState([]);
   const handleCart = (product) => {
-    const newCart = [...cart, product];
+    // const newCart = [...cart, product];
+    const newCart = [...cart];
+
+    const existing = cart.find((p) => p.key === product.key);
+    if (existing) {
+      product.quantity += 1;
+    } else {
+      product.quantity = 1;
+      newCart.push(product);
+    }
+
     setCart(newCart);
     addToDb(product.key);
   };
