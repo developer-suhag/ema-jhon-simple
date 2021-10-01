@@ -16,13 +16,13 @@ function App() {
           <Route exact path="/">
             <Shop></Shop>
           </Route>
-          <Route path="/shop">
+          <Route exact path="/shop">
             <Shop></Shop>
           </Route>
-          <Route path="/review">
+          <Route exact path="/review">
             <OrderReview></OrderReview>
           </Route>
-          <Route path="/inventory">
+          <Route exact path="/inventory">
             <Inventroy></Inventroy>
           </Route>
           <Route path="/order-place">
