@@ -1,20 +1,27 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../../images/logo.png";
 import "./Header.css";
 
 const Header = () => {
   // cart
-  const handleCart = (product) => {
-    console.log("clicked");
-  };
+  // const handleCart = (product) => {
+  //   console.log("clicked");
+  // };
 
   return (
     <div className="header">
       <img className="logo" src={logo} alt="" />
       <nav className="nav-bar">
-        <a href="/shop">Shop</a>
-        <a href="/orders">Order Review</a>
-        <a href="/inventory">Manage Inventroy Here</a>
+        <NavLink activeClassName="selected" to="/shop">
+          Shop
+        </NavLink>
+        <NavLink activeClassName="selected" to="/review">
+          Order Review
+        </NavLink>
+        <NavLink activeClassName="selected" to="/inventory">
+          Manage Inventroy Here
+        </NavLink>
       </nav>
     </div>
   );

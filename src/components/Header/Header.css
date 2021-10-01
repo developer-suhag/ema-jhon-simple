@@ -21,3 +21,8 @@
   background: #d2dae2;
   color: #1e272e;
 }
+
+.selected {
+  background: #d2dae2;
+  color: #1e272e !important;
+}
