@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faShoppingCart,
+  faShoppingBag,
+} from "@fortawesome/free-solid-svg-icons";
 import { addToDb, getStoredCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import "./Shop.css";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -21,25 +25,21 @@ const Shop = () => {
   // handle add to cart
   const [cart, setCart] = useState([]);
   const handleCart = (product) => {
-    // const newCart = [...cart, product];
-    const newCart = [...cart];
+    const exist = cart.find((p) => p.key === product.key);
+    let newCart = [];
 
-    const existing = cart.find((p) => p.key === product.key);
-    if (existing) {
+    if (exist) {
+      const rest = cart.filter((p) => p.key !== product.key);
       product.quantity += 1;
+      newCart = [...rest, product];
     } else {
       product.quantity = 1;
-      newCart.push(product);
+      newCart = [...cart, product];
     }
 
     setCart(newCart);
     addToDb(product.key);
   };
-
-  // const totalProduct = cart.reduce(
-  //   (previous, current) => previous + current.quantity,
-  //   0
-  // );
 
   // handle localStroage
   useEffect(() => {
@@ -99,7 +99,16 @@ const Shop = () => {
           ))}
         </div>
         <div className="cart-container">
-          <Cart cart={cart}></Cart>
+          <Cart cart={cart}>
+            <Link to="/review">
+              <button className="regular-btn">
+                <span className="icon">
+                  <FontAwesomeIcon icon={faShoppingBag} />
+                </span>
+                Review Order
+              </button>
+            </Link>
+          </Cart>
         </div>
       </div>
     </div>

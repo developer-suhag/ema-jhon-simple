@@ -1,20 +1,13 @@
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useHistory } from "react-router";
 import "./Cart.css";
 const Cart = (props) => {
   const { cart } = props;
-  // let total = 0;
-  // for (const product of cart) {
-  //   total += product.price;
-  // }
 
   // handle click
-  const history = useHistory();
-  const handleClick = () => {
-    history.push("/review");
-  };
+  // const history = useHistory();
+  // const handleClick = () => {
+  //   history.push("/review");
+  // };
 
   let total = 0;
   let totalQuantity = 0;
@@ -49,12 +42,7 @@ const Cart = (props) => {
           Order Total: <b>{grandTotal.toFixed(2)}</b>
         </h5>
       </div>
-      <button onClick={handleClick} className="regular-btn">
-        <span className="icon">
-          <FontAwesomeIcon icon={faShoppingCart} />
-        </span>
-        Review Order
-      </button>
+      {props.children}
     </div>
   );
 };

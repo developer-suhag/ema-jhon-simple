@@ -4,7 +4,7 @@ import error from "../../images/404.jpg";
 const PageNotFound = () => {
   return (
     <div style={{ textAlign: "center" }}>
-      <img style={{ width: "50%" }} src={error} alt="" />
+      <img style={{ width: "40%" }} src={error} alt="" />
     </div>
   );
 };
