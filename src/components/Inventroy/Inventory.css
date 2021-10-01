@@ -1,0 +1,11 @@
+body {
+}
+.inventory {
+  background: #bbd4ea;
+  padding: 100px;
+  text-align: center;
+}
+.sleeping {
+  font-size: 30px;
+  color: #2a9d8f;
+}

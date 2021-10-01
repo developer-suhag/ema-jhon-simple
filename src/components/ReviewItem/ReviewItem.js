@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const ReviewItem = (props) => {
-  const { name, seller, stock, price, key, quantity } = props.product;
+  const { name, seller, stock, price, key, quantity, shipping } = props.product;
   return (
     <div className="product">
       <div>
@@ -26,7 +26,8 @@ const ReviewItem = (props) => {
             </button>
           </div>
           <div className="feature-box">
-            <h4 className="feature">Shipping options</h4>
+            <h4 className="feature">Shipping rate</h4>
+            <p>{shipping}</p>
           </div>
         </div>
       </div>
