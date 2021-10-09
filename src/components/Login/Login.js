@@ -3,8 +3,10 @@ import "./Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
+  const { signInUsingGoogle, signInUsingGithub, error } = useAuth();
   return (
     <div className="login">
       <div>
@@ -27,16 +29,17 @@ const Login = () => {
             <p>
               New to Ema-John? <Link to="signup">Create an account</Link>
             </p>
+            <p>{error}</p>
           </form>
         </div>
         <div className="social-login">
           <p>Or LogIn using any of this</p>
           <div className="social-icon">
-            <button className="social">
+            <button onClick={signInUsingGoogle} className="social">
               <FontAwesomeIcon icon={faGoogle} />
             </button>
 
-            <button className="social">
+            <button onClick={signInUsingGithub} className="social">
               <FontAwesomeIcon icon={faGithub} />
             </button>
           </div>

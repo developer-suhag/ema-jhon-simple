@@ -1,13 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import logo from "../../images/logo.png";
 import "./Header.css";
 
 const Header = () => {
-  // cart
-  // const handleCart = (product) => {
-  //   console.log("clicked");
-  // };
+  const { user, logOut } = useAuth();
 
   return (
     <div className="header">
@@ -22,9 +20,18 @@ const Header = () => {
         <NavLink activeClassName="selected" to="/inventory">
           Manage Inventroy Here
         </NavLink>
-        <NavLink activeClassName="selected" to="/login">
-          Login
-        </NavLink>
+        {user.email ? (
+          <button onClick={logOut} className="navlink">
+            Log Out
+          </button>
+        ) : (
+          <NavLink activeClassName="selected" to="/login">
+            Login
+          </NavLink>
+        )}
+        {user.photoURL && (
+          <img className="user-profile" src={user.photoURL} alt="" />
+        )}
       </nav>
     </div>
   );
