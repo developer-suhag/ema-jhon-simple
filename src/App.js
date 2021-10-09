@@ -2,10 +2,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Inventroy from "./components/Inventroy/Inventroy";
+import Login from "./components/Login/Login";
 import OrderPlaced from "./components/OrderPlaced/OrderPlaced";
 import OrderReview from "./components/OrderReview/OrderReview";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import Shop from "./components/Shop/Shop";
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   return (
@@ -25,8 +27,14 @@ function App() {
           <Route exact path="/inventory">
             <Inventroy></Inventroy>
           </Route>
-          <Route path="/order-place">
+          <Route exact path="/order-place">
             <OrderPlaced></OrderPlaced>
+          </Route>
+          <Route exact path="/login">
+            <Login></Login>
+          </Route>
+          <Route exact path="/signup">
+            <SignUp></SignUp>
           </Route>
           <Route path="*">
             <PageNotFound></PageNotFound>

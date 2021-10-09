@@ -22,6 +22,9 @@ const Header = () => {
         <NavLink activeClassName="selected" to="/inventory">
           Manage Inventroy Here
         </NavLink>
+        <NavLink activeClassName="selected" to="/login">
+          Login
+        </NavLink>
       </nav>
     </div>
   );
