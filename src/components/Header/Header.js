@@ -29,8 +29,10 @@ const Header = () => {
             Login
           </NavLink>
         )}
-        {user.photoURL && (
+        {user.photoURL ? (
           <img className="user-profile" src={user.photoURL} alt="" />
+        ) : (
+          <span style={{ color: "#fff" }}>{user.displayName}</span>
         )}
       </nav>
     </div>

@@ -22,24 +22,12 @@ const useFirebase = () => {
 
   //   sign in with google
   const signInUsingGoogle = () => {
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+    return signInWithPopup(auth, googleProvider);
   };
 
   // sign in with github
   const signInUsingGithub = () => {
-    signInWithPopup(auth, githubProvider)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+    return signInWithPopup(auth, githubProvider);
   };
 
   const loginWithEmail = () => {};

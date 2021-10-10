@@ -2,11 +2,25 @@ import React from "react";
 import "./Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const { signInUsingGoogle, signInUsingGithub, error } = useAuth();
+  const location = useLocation();
+  const history = useHistory();
+  const redriect_uri = location.state?.from || "/shop";
+
+  const handleGoogleLogin = () => {
+    signInUsingGoogle().then((result) => {
+      history.push(redriect_uri);
+    });
+  };
+  const handleGithubLogin = () => {
+    signInUsingGithub().then((result) => {
+      history.push(redriect_uri);
+    });
+  };
   return (
     <div className="login">
       <div>
@@ -35,11 +49,11 @@ const Login = () => {
         <div className="social-login">
           <p>Or LogIn using any of this</p>
           <div className="social-icon">
-            <button onClick={signInUsingGoogle} className="social">
+            <button onClick={handleGoogleLogin} className="social">
               <FontAwesomeIcon icon={faGoogle} />
             </button>
 
-            <button onClick={signInUsingGithub} className="social">
+            <button onClick={handleGithubLogin} className="social">
               <FontAwesomeIcon icon={faGithub} />
             </button>
           </div>

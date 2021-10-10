@@ -1,5 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoneyCheckAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMoneyCheckAlt,
+  faShippingFast,
+} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import useCart from "../../hooks/useCart";
 import useProducts from "../../hooks/useProducts";
@@ -19,9 +22,9 @@ const OrderReview = () => {
   };
   // handle Place Order
   const handlePlaceOrder = () => {
-    history.push("/order-place");
-    setCart([]);
-    clearTheCart();
+    history.push("/shipping");
+    // setCart([]);
+    // clearTheCart();
   };
   return (
     <div className="shop-contaner">
@@ -39,9 +42,9 @@ const OrderReview = () => {
           <button onClick={handlePlaceOrder} className="regular-btn">
             {" "}
             <span className="icon">
-              <FontAwesomeIcon icon={faMoneyCheckAlt} />
+              <FontAwesomeIcon icon={faShippingFast} />
             </span>{" "}
-            Place Order
+            Proced to shipping
           </button>
         </Cart>
       </div>
