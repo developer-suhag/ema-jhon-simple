@@ -5,9 +5,11 @@ const useCart = (products) => {
   const [cart, setCart] = useState([]);
   useEffect(() => {
     const savedCart = getStoredCart();
+    console.log(savedCart);
     const storedCart = [];
     if (products.length) {
       for (const key in savedCart) {
+        console.log(key);
         const addedProduct = products.find((product) => product.key === key);
         if (addedProduct) {
           const quantity = savedCart[key];

@@ -13,14 +13,22 @@ import { Link } from "react-router-dom";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [displayProducts, setDisplayProducts] = useState([]);
+  const [page, setPage] = useState(0);
+  const [pageCount, setPageCount] = useState(0);
+
+  const size = 10;
+
   useEffect(() => {
-    fetch("./products.json")
+    fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data);
-        setDisplayProducts(data);
+        setProducts(data.products);
+        setDisplayProducts(data.products);
+        const count = data.count;
+        const pageNumber = Math.ceil(count / size);
+        setPageCount(pageNumber);
       });
-  }, []);
+  }, [page]);
 
   // handle add to cart
   const [cart, setCart] = useState([]);
@@ -47,6 +55,7 @@ const Shop = () => {
     const storedCart = [];
     if (products.length) {
       for (const key in savedCart) {
+        // debugger;
         const addedProduct = products.find((product) => product.key === key);
         storedCart.push(addedProduct);
         if (addedProduct) {
@@ -97,6 +106,17 @@ const Shop = () => {
               product={product}
             ></Product>
           ))}
+          <div className="pagination">
+            {[...Array(pageCount).keys()].map((number) => (
+              <button
+                className={number === page ? "selected" : ""}
+                key={number}
+                onClick={() => setPage(number)}
+              >
+                {number + 1}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="cart-container">
           <Cart cart={cart}>

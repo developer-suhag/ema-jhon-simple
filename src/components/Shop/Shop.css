@@ -30,3 +30,20 @@
 .cart .icon {
   color: #fff;
 }
+
+/* pagination */
+
+.pagination {
+  padding: 20px 40px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+.pagination .selected {
+  background: #1289a7;
+  border: 1px solid #55efc4;
+  color: #fff !important;
+}
