@@ -1,19 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMoneyCheckAlt,
-  faShippingFast,
-} from "@fortawesome/free-solid-svg-icons";
+import { faShippingFast } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import useCart from "../../hooks/useCart";
-import useProducts from "../../hooks/useProducts";
-import { clearTheCart, deleteFromDb } from "../../utilities/fakedb";
+import { deleteFromDb } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import ReviewItem from "../ReviewItem/ReviewItem";
 import { useHistory } from "react-router";
 
 const OrderReview = () => {
-  const [products] = useProducts();
-  const [cart, setCart] = useCart(products);
+  const [cart, setCart] = useCart();
   const history = useHistory();
   const handleRemove = (key) => {
     const newCart = cart.filter((product) => product.key !== key);
@@ -31,7 +26,7 @@ const OrderReview = () => {
       <div className="product-container">
         {cart.map((product) => (
           <ReviewItem
-            key={product.key}
+            key={product._id}
             product={product}
             handleRemove={handleRemove}
           ></ReviewItem>

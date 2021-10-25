@@ -9,10 +9,14 @@ import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import "./Shop.css";
 import { Link } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
+
+  const [cart, setCart] = useCart();
   const [displayProducts, setDisplayProducts] = useState([]);
+
   const [page, setPage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
 
@@ -31,14 +35,15 @@ const Shop = () => {
   }, [page]);
 
   // handle add to cart
-  const [cart, setCart] = useState([]);
+
   const handleCart = (product) => {
     const exist = cart.find((p) => p.key === product.key);
     let newCart = [];
 
     if (exist) {
       const rest = cart.filter((p) => p.key !== product.key);
-      product.quantity += 1;
+      // product.quantity += 1;
+      exist.quantity += 1;
       newCart = [...rest, product];
     } else {
       product.quantity = 1;
@@ -65,7 +70,7 @@ const Shop = () => {
         }
       }
     }
-  }, [products]);
+  }, []);
 
   // dynamic search
   const handleSearch = (event) => {
@@ -92,16 +97,16 @@ const Shop = () => {
           <span className="icon">
             <FontAwesomeIcon icon={faShoppingCart} />
           </span>
-          <span className="">
+          {/* <span className="">
             {cart.reduce((previous, current) => previous + current.quantity, 0)}
-          </span>
+          </span> */}
         </div>
       </div>
       <div className="shop-contaner">
         <div className="product-container">
           {displayProducts.map((product) => (
             <Product
-              key={product.key}
+              key={product._id}
               handleCart={handleCart}
               product={product}
             ></Product>
