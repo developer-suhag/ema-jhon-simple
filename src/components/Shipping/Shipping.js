@@ -1,6 +1,8 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
+import { clearTheCart, getStoredCart } from "../../utilities/fakedb";
 import "./Shipping.css";
 
 const Shipping = () => {
@@ -8,9 +10,21 @@ const Shipping = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const savedCart = getStoredCart();
+    data.order = savedCart;
+    axios.post("http://localhost:5000/order", data).then((result) => {
+      console.log(result);
+      if (result.data?.insertedId) {
+        alert("Order proceed successfuly");
+        clearTheCart();
+        reset();
+      }
+    });
+  };
   return (
     <div className="shipping">
       <form className="shipping-form" onSubmit={handleSubmit(onSubmit)}>
