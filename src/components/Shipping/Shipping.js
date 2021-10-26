@@ -16,14 +16,16 @@ const Shipping = () => {
   const onSubmit = (data) => {
     const savedCart = getStoredCart();
     data.order = savedCart;
-    axios.post("http://localhost:5000/order", data).then((result) => {
-      console.log(result);
-      if (result.data?.insertedId) {
-        alert("Order proceed successfuly");
-        clearTheCart();
-        reset();
-      }
-    });
+    axios
+      .post("https://obscure-shore-51996.herokuapp.com/order", data)
+      .then((result) => {
+        console.log(result);
+        if (result.data?.insertedId) {
+          alert("Order proceed successfuly");
+          clearTheCart();
+          reset();
+        }
+      });
   };
   return (
     <div className="shipping">

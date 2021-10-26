@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faShoppingCart,
   faShoppingBag,
+  faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 import { addToDb, getStoredCart } from "../../utilities/fakedb";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
 import "./Shop.css";
-import { Link } from "react-router-dom";
-import useCart from "../../hooks/useCart";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -23,7 +23,9 @@ const Shop = () => {
   const size = 10;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
+    fetch(
+      `https://obscure-shore-51996.herokuapp.com/products?page=${page}&&size=${size}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.products);
@@ -97,9 +99,9 @@ const Shop = () => {
           <span className="icon">
             <FontAwesomeIcon icon={faShoppingCart} />
           </span>
-          {/* <span className="">
+          <span className="">
             {cart.reduce((previous, current) => previous + current.quantity, 0)}
-          </span> */}
+          </span>
         </div>
       </div>
       <div className="shop-contaner">
