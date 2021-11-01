@@ -5,6 +5,7 @@ import Inventroy from "./components/Inventroy/Inventroy";
 import Login from "./components/Login/Login";
 import OrderPlaced from "./components/OrderPlaced/OrderPlaced";
 import OrderReview from "./components/OrderReview/OrderReview";
+import Orders from "./components/Orders/Orders";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Shipping from "./components/Shipping/Shipping";
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <Route exact path="/review">
               <OrderReview></OrderReview>
+            </Route>
+            <Route exact path="/orders">
+              <Orders></Orders>
             </Route>
             <Route exact path="/inventory">
               <Inventroy></Inventroy>

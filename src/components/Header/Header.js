@@ -17,9 +17,17 @@ const Header = () => {
         <NavLink activeClassName="selected" to="/review">
           Order Review
         </NavLink>
-        <NavLink activeClassName="selected" to="/inventory">
-          Manage Inventroy Here
-        </NavLink>
+
+        {user?.email && (
+          <NavLink activeClassName="selected" to="/orders">
+            Orders
+          </NavLink>
+        )}
+        {user?.email && (
+          <NavLink activeClassName="selected" to="/inventory">
+            Manage Inventroy Here
+          </NavLink>
+        )}
         {user.email ? (
           <button onClick={logOut} className="navlink">
             Log Out
